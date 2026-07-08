@@ -168,6 +168,12 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
   }
 
+  .btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
   .btn-primary {
     background: var(--color-accent);
     color: #fff;
@@ -891,6 +897,189 @@
     html { scroll-behavior: auto; }
     .fade-in { opacity: 1; transform: none; transition: none; }
   }
+
+  /* ---------- Floating WhatsApp chat widget ---------- */
+  .wa-widget {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .wa-fab {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    background: #25d366;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+    transition: transform 0.2s ease;
+  }
+  .wa-fab:hover { transform: scale(1.06); }
+  .wa-fab svg { width: 30px; height: 30px; position: relative; z-index: 1; }
+
+  .wa-fab::before,
+  .wa-fab::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: #25d366;
+    opacity: 0.55;
+    animation: wa-pulse 2.4s ease-out infinite;
+  }
+  .wa-fab::after { animation-delay: 1.2s; }
+
+  @keyframes wa-pulse {
+    0% { transform: scale(1); opacity: 0.55; }
+    100% { transform: scale(1.9); opacity: 0; }
+  }
+
+  .wa-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--color-accent-dark);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    line-height: 18px;
+    text-align: center;
+    border: 2px solid #fff;
+    z-index: 2;
+  }
+
+  .wa-panel {
+    width: 320px;
+    max-width: calc(100vw - 40px);
+    background: var(--color-bg);
+    border-radius: 16px;
+    box-shadow: 0 16px 48px rgba(13, 110, 125, 0.25);
+    overflow: hidden;
+    transform-origin: bottom right;
+    transform: scale(0.92) translateY(8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .wa-panel.open {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+  }
+
+  .wa-panel-header {
+    background: linear-gradient(135deg, var(--color-primary), #1d9a52);
+    color: #fff;
+    padding: 1rem 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .wa-panel-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .wa-panel-avatar svg { width: 24px; height: 24px; }
+  .wa-panel-header h3 { font-size: 0.98rem; font-weight: 600; margin: 0; }
+  .wa-panel-status { font-size: 0.78rem; opacity: 0.9; display: flex; align-items: center; gap: 0.35rem; }
+  .wa-panel-status::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #7cff9e;
+    display: inline-block;
+  }
+  .wa-panel-close {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: #fff;
+    opacity: 0.85;
+    cursor: pointer;
+    padding: 4px;
+    line-height: 0;
+  }
+  .wa-panel-close:hover { opacity: 1; }
+  .wa-panel-close svg { width: 18px; height: 18px; }
+
+  .wa-panel-body {
+    padding: 1rem;
+    background: var(--color-bg-alt);
+  }
+  .wa-bubble {
+    background: #fff;
+    border-radius: 12px;
+    border-top-left-radius: 2px;
+    padding: 0.7rem 0.9rem;
+    font-size: 0.85rem;
+    color: var(--color-text);
+    box-shadow: 0 2px 8px rgba(13, 110, 125, 0.06);
+    margin-bottom: 0.9rem;
+  }
+  .wa-suggestions { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem; }
+  .wa-suggestion {
+    display: block;
+    text-align: left;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 0.55rem 0.8rem;
+    font-size: 0.82rem;
+    font-family: inherit;
+    color: var(--color-primary-dark);
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .wa-suggestion:hover { border-color: var(--color-secondary); background: #f0fbfd; }
+
+  .wa-panel-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    background: #25d366;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+  }
+  .wa-panel-cta svg { width: 18px; height: 18px; }
+  .wa-panel-cta:hover { background: #1fbb59; }
+
+  @media (max-width: 480px) {
+    .wa-widget { right: 14px; bottom: 14px; }
+    .wa-panel { width: calc(100vw - 28px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wa-fab::before, .wa-fab::after { animation: none; opacity: 0; }
+  }
 </style>
 </head>
 <body>
@@ -1281,6 +1470,42 @@
   </div>
 </footer>
 
+<!-- ================= WHATSAPP CHAT WIDGET ================= -->
+<div class="wa-widget">
+  <div class="wa-panel" id="wa-panel" aria-hidden="true">
+    <div class="wa-panel-header">
+      <div class="wa-panel-avatar" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.5.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2Zm5.9 14.2c-.2.7-1.4 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.6-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.8.9 2.1 1 .3.2.5.2.6.3.1.2.1.9-.1 1.6Z"/></svg>
+      </div>
+      <div>
+        <h3>Wellview Clinic</h3>
+        <div class="wa-panel-status">Usually replies within minutes</div>
+      </div>
+      <button type="button" class="wa-panel-close" id="wa-close" aria-label="Close chat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="wa-panel-body">
+      <div class="wa-bubble">Hi there! 👋 How can we help you today? Tap a question below or start chatting on WhatsApp.</div>
+      <div class="wa-suggestions">
+        <a class="wa-suggestion" href="https://wa.me/6593627447?text=Hi%20Wellview%20Clinic%2C%20I%27d%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener">📅 Book an appointment</a>
+        <a class="wa-suggestion" href="https://wa.me/6593627447?text=Hi%2C%20what%20are%20your%20clinic%20hours%20and%20location%3F" target="_blank" rel="noopener">📍 Clinic hours &amp; location</a>
+        <a class="wa-suggestion" href="https://wa.me/6593627447?text=Hi%2C%20I%20have%20a%20question%20about%20pediatric%20care%20for%20my%20child." target="_blank" rel="noopener">🧒 Pediatric care question</a>
+        <a class="wa-suggestion" href="https://wa.me/6593627447?text=Hi%2C%20can%20you%20share%20more%20details%20about%20consultation%20fees%3F" target="_blank" rel="noopener">💬 Consultation fees</a>
+      </div>
+      <a class="wa-panel-cta" href="https://wa.me/6593627447" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.5.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2Zm5.9 14.2c-.2.7-1.4 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.6-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.8.9 2.1 1 .3.2.5.2.6.3.1.2.1.9-.1 1.6Z"/></svg>
+        Start WhatsApp chat
+      </a>
+    </div>
+  </div>
+
+  <button type="button" class="wa-fab" id="wa-toggle" aria-label="Chat with us on WhatsApp" aria-expanded="false" aria-controls="wa-panel">
+    <span class="wa-badge" aria-hidden="true">1</span>
+    <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.5.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2Zm5.9 14.2c-.2.7-1.4 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1s.8-2.2 1-2.5c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.1.3-.3.5-.1.2-.3.4-.4.5-.1.1-.3.3-.1.6.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.6-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.8.9 2.1 1 .3.2.5.2.6.3.1.2.1.9-.1 1.6Z"/></svg>
+  </button>
+</div>
+
 <script>
   (function () {
     'use strict';
@@ -1376,6 +1601,16 @@
       return isValid;
     }
 
+    // FormSubmit (https://formsubmit.co) delivers this form by email with no
+    // backend of our own. On the very first submission to a new address,
+    // FormSubmit emails a one-time "Activate Form" link instead of delivering
+    // the enquiry — click that link once, then swap this endpoint for the
+    // private hash FormSubmit gives you (see README) so the address isn't
+    // exposed in the page's public source.
+    var FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/deane@mediashock.com.sg';
+    var submitButton = form.querySelector('button[type="submit"]');
+    var submitButtonDefaultText = submitButton.textContent;
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
@@ -1397,28 +1632,47 @@
         return;
       }
 
-      // ---------------------------------------------------------------
-      // Real backend integration point:
-      // Replace the console.log below with, e.g.:
-      //
-      // fetch('/api/appointments', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(data)
-      // })
-      //   .then(function (res) { return res.json(); })
-      //   .then(function (result) { /* handle success */ })
-      //   .catch(function (err) { /* handle error */ });
-      // ---------------------------------------------------------------
-      console.log('Appointment enquiry submitted:', data);
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending…';
 
-      statusBox.classList.add('success');
-      statusBox.textContent = "Thank you! We'll contact you shortly.";
-      form.reset();
-
-      ['fullName', 'email', 'phone', 'preferredDate', 'message'].forEach(function (id) {
-        setFieldError(id, '');
-      });
+      fetch(FORMSUBMIT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: 'New appointment enquiry — Wellview Clinic',
+          _template: 'table',
+          _captcha: 'false',
+          'Full Name': data.fullName,
+          'Email': data.email,
+          'Phone': data.phone,
+          'Preferred Date': data.preferredDate,
+          'Message': data.message
+        })
+      })
+        .then(function (res) {
+          if (!res.ok) { throw new Error('FormSubmit returned ' + res.status); }
+          return res.json();
+        })
+        .then(function (result) {
+          if (String(result.success) !== 'true') {
+            throw new Error(result.message || 'FormSubmit reported failure');
+          }
+          statusBox.classList.add('success');
+          statusBox.textContent = "Thank you! We'll contact you shortly.";
+          form.reset();
+          ['fullName', 'email', 'phone', 'preferredDate', 'message'].forEach(function (id) {
+            setFieldError(id, '');
+          });
+        })
+        .catch(function (err) {
+          console.error('Appointment enquiry failed to send:', err);
+          statusBox.classList.add('error');
+          statusBox.textContent = "Something went wrong sending your request — please call us at +65 6123 4567 instead.";
+        })
+        .finally(function () {
+          submitButton.disabled = false;
+          submitButton.textContent = submitButtonDefaultText;
+        });
     });
 
     /* ---------- First Visit Checklist (lead magnet) ---------- */
@@ -1465,6 +1719,51 @@
         var messageField = document.getElementById('message');
         if (messageField && !messageField.value.trim()) {
           messageField.value = 'Please email me the First Visit Checklist.';
+        }
+      });
+    }
+
+    /* ---------- Floating WhatsApp chat widget ---------- */
+    var waToggle = document.getElementById('wa-toggle');
+    var waPanel = document.getElementById('wa-panel');
+    var waClose = document.getElementById('wa-close');
+    var waBadge = waToggle ? waToggle.querySelector('.wa-badge') : null;
+
+    function openWaPanel() {
+      waPanel.classList.add('open');
+      waPanel.setAttribute('aria-hidden', 'false');
+      waToggle.setAttribute('aria-expanded', 'true');
+      if (waBadge) waBadge.style.display = 'none';
+    }
+
+    function closeWaPanel() {
+      waPanel.classList.remove('open');
+      waPanel.setAttribute('aria-hidden', 'true');
+      waToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    if (waToggle && waPanel) {
+      waToggle.addEventListener('click', function () {
+        if (waPanel.classList.contains('open')) {
+          closeWaPanel();
+        } else {
+          openWaPanel();
+        }
+      });
+
+      waClose.addEventListener('click', closeWaPanel);
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && waPanel.classList.contains('open')) {
+          closeWaPanel();
+        }
+      });
+
+      document.addEventListener('click', function (e) {
+        if (waPanel.classList.contains('open') &&
+            !waPanel.contains(e.target) &&
+            !waToggle.contains(e.target)) {
+          closeWaPanel();
         }
       });
     }
