@@ -319,6 +319,7 @@
   }
 
   .hero-inner {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -329,10 +330,17 @@
 
   @media (min-width: 900px) {
     .hero-inner {
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: stretch;
       text-align: left;
     }
     .hero-actions { justify-content: flex-start; }
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-bottom: 2rem;
+    }
   }
 
   .hero-content { max-width: 720px; }
@@ -340,21 +348,46 @@
   .hero-photo {
     position: relative;
     justify-self: center;
-  }
-
-  .hero-photo img {
-    width: 280px;
-    height: 280px;
+    width: 300px;
+    height: 360px;
     border-radius: 28px;
-    object-fit: cover;
+    overflow: hidden;
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.28);
     border: 4px solid rgba(255, 255, 255, 0.25);
   }
 
+  .hero-photo img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(165deg, rgba(9, 79, 90, 0.5), rgba(255, 138, 101, 0.1) 78%);
+    mix-blend-mode: multiply;
+  }
+
+  @media (min-width: 900px) {
+    .hero-photo {
+      justify-self: stretch;
+      width: auto;
+      height: 100%;
+      min-height: 480px;
+      border-radius: 32px 0 0 32px;
+      border-width: 4px 0 4px 4px;
+      margin-right: calc(-1 * max(0px, (100vw - var(--max-width)) / 2) - 1.5rem);
+    }
+  }
+
   .hero-badge {
     position: absolute;
-    bottom: -18px;
-    left: -18px;
+    bottom: 24px;
+    left: 24px;
     background: #fff;
     color: var(--color-text);
     padding: 0.9rem 1.2rem;
@@ -371,7 +404,7 @@
   .hero-badge .stars { color: #f5b942; font-size: 0.9rem; }
 
   @media (max-width: 899px) {
-    .hero-badge { left: 50%; transform: translateX(-50%); }
+    .hero-badge { left: 50%; transform: translateX(-50%); bottom: -18px; }
   }
 
   .hero h1 {
@@ -906,7 +939,7 @@
         </div>
       </div>
       <div class="hero-photo">
-        <img src="https://images.unsplash.com/photo-1734002886107-168181bcd6a1?w=800&q=80&auto=format&fit=crop" alt="Dr. Amanda Wells smiling, a physician at Wellview Clinic" width="280" height="280" fetchpriority="high">
+        <img src="https://images.unsplash.com/photo-1734002886107-168181bcd6a1?w=1200&q=80&auto=format&fit=crop" alt="Dr. Amanda Wells smiling, a physician at Wellview Clinic" fetchpriority="high">
         <div class="hero-badge">
           <span class="stars" aria-hidden="true">★★★★★</span>
           <span>4.9/5 from 2,300+ patients</span>
