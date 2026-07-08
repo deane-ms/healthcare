@@ -2,7 +2,7 @@
 
 A single-page marketing site for **Wellview Clinic**, a fictional Singapore healthcare clinic. Built as one self-contained `index.html` — no build step, no dependencies, no backend.
 
-🔗 **Live site:** deployed automatically to GitHub Pages on every push to `main`.
+🔗 **Live site:** https://deane-ms.github.io/healthcare/ (deployed automatically to GitHub Pages on every push to `main`)
 
 ## Sections
 
