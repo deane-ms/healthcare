@@ -4,6 +4,8 @@ A single-page marketing site for **Wellview Clinic**, a fictional Singapore heal
 
 🔗 **Live site:** https://deane-ms.github.io/healthcare/ (deployed automatically to GitHub Pages on every push to `main`)
 
+![Wellview Clinic screenshot](assets/screenshot.png)
+
 ## Sections
 
 - **Navbar** — sticky, with a mobile hamburger menu
@@ -36,6 +38,10 @@ Pushing to `main` triggers [`.github/workflows/deploy.yml`](.github/workflows/de
 - No frameworks, package manager, or bundler
 - Accessibility touches: skip link, `aria-*` attributes, focus-visible styles, `prefers-reduced-motion` support
 - Scroll-triggered fade-in animations via `IntersectionObserver`
+
+## Regenerating the screenshot
+
+`assets/screenshot.png` is a full-page capture of `index.html`, taken with the Playwright MCP server configured in [`.mcp.json`](.mcp.json) (`@playwright/mcp`). Fade-in sections are hidden until scrolled into view, so capture with `prefers-reduced-motion: reduce` emulated (or scroll through the page) to render every section before screenshotting.
 
 ## Notes for contributors
 
