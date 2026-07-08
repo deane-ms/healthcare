@@ -4,9 +4,59 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wellview Clinic — Compassionate Care, Close to You</title>
+<meta name="description" content="Wellview Clinic is a family healthcare clinic in Orchard, Singapore, offering general consultations, pediatric care, diagnostics, and dental care with same-day appointments.">
+<link rel="canonical" href="https://deane-ms.github.io/healthcare/">
+<meta name="theme-color" content="#0d6e7d">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wellview Clinic — Compassionate Care, Close to You">
+<meta property="og:description" content="Family healthcare clinic in Orchard, Singapore. General consultations, pediatric care, diagnostics, and dental care — same-day appointments available.">
+<meta property="og:url" content="https://deane-ms.github.io/healthcare/">
+<meta property="og:image" content="https://deane-ms.github.io/healthcare/assets/screenshot.png">
+<meta property="og:locale" content="en_SG">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Wellview Clinic — Compassionate Care, Close to You">
+<meta name="twitter:description" content="Family healthcare clinic in Orchard, Singapore. General consultations, pediatric care, diagnostics, and dental care.">
+<meta name="twitter:image" content="https://deane-ms.github.io/healthcare/assets/screenshot.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalClinic",
+  "name": "Wellview Clinic",
+  "image": "https://deane-ms.github.io/healthcare/assets/screenshot.png",
+  "url": "https://deane-ms.github.io/healthcare/",
+  "telephone": "+65-6123-4567",
+  "email": "hello@wellviewclinic.sg",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "21 Orchard Boulevard, #03-08",
+    "addressLocality": "Singapore",
+    "postalCode": "248649",
+    "addressCountry": "SG"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "08:00",
+      "closes": "20:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "09:00",
+      "closes": "13:00"
+    }
+  ],
+  "medicalSpecialty": ["General Practice", "Pediatric", "Dentistry", "Diagnostic Radiology"]
+}
+</script>
 
 <style>
   /* ---------- Reset & Base ---------- */
@@ -27,6 +77,7 @@
     --shadow-soft: 0 10px 30px rgba(13, 110, 125, 0.08);
     --radius: 14px;
     --max-width: 1180px;
+    --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
   }
 
   body {
@@ -68,8 +119,9 @@
   }
 
   .section-heading h2 {
-    font-size: clamp(1.7rem, 3vw, 2.3rem);
-    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 600;
     color: var(--color-primary-dark);
     margin-bottom: 0.75rem;
   }
@@ -135,6 +187,13 @@
     color: #fff;
   }
   .btn-solid:hover { background: var(--color-primary-dark); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-primary-dark);
+    border: 2px solid var(--color-primary);
+  }
+  .btn-ghost:hover { background: var(--color-primary); color: #fff; transform: translateY(-2px); }
 
   /* ---------- Navbar ---------- */
   .navbar {
@@ -316,9 +375,10 @@
   }
 
   .hero h1 {
-    font-size: clamp(2.1rem, 5vw, 3.4rem);
-    font-weight: 700;
-    line-height: 1.15;
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 600;
+    line-height: 1.12;
     margin-bottom: 1.25rem;
   }
 
@@ -358,7 +418,7 @@
     color: #fff;
   }
 
-  .trust-item .icon { font-size: 1.3rem; }
+  .trust-item svg { width: 20px; height: 20px; flex-shrink: 0; }
 
   /* ---------- Services ---------- */
   .services-grid {
@@ -497,8 +557,9 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    font-size: 1.1rem;
   }
+
+  .contact-info-icon svg { width: 20px; height: 20px; }
 
   .contact-info-item h4 { font-size: 1rem; color: var(--color-primary-dark); margin-bottom: 0.2rem; }
   .contact-info-item p { color: var(--color-text-light); font-size: 0.95rem; }
@@ -583,6 +644,144 @@
   }
 
   form#enquiry-form button[type="submit"] { width: 100%; margin-top: 0.25rem; }
+
+  /* ---------- Your First Visit (journey + lead magnet) ---------- */
+  .journey-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    position: relative;
+    margin-bottom: 3rem;
+  }
+
+  @media (min-width: 760px) {
+    .journey-grid::before {
+      content: '';
+      position: absolute;
+      top: 27px;
+      left: 12%;
+      right: 12%;
+      height: 2px;
+      background: repeating-linear-gradient(to right, var(--color-accent) 0 10px, transparent 10px 22px);
+      z-index: 0;
+    }
+  }
+
+  .journey-step { position: relative; z-index: 1; text-align: center; }
+
+  .journey-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid var(--color-accent);
+    color: var(--color-primary-dark);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .journey-step h3 { color: var(--color-primary-dark); margin-bottom: 0.4rem; font-size: 1.05rem; }
+  .journey-step p { color: var(--color-text-light); font-size: 0.92rem; max-width: 260px; margin: 0 auto; }
+
+  .checklist-card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 760px) {
+    .checklist-card { grid-template-columns: 1.2fr 1fr; align-items: center; }
+  }
+
+  .checklist-copy h3 {
+    font-family: var(--font-display);
+    color: var(--color-primary-dark);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+
+  .checklist-copy > p { color: var(--color-text-light); margin-bottom: 1.25rem; }
+
+  .print-only-heading { display: none; }
+
+  .checklist-list { display: flex; flex-direction: column; gap: 0.65rem; }
+
+  .checklist-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    color: var(--color-text);
+    font-size: 0.95rem;
+  }
+
+  .checklist-list li::before {
+    content: '✓';
+    color: var(--color-primary);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .checklist-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .checklist-actions .btn { width: 100%; }
+
+  .checklist-email-link {
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--color-primary-dark);
+    text-align: center;
+  }
+  .checklist-email-link:hover { text-decoration: underline; }
+
+  @media print {
+    body * { visibility: hidden; }
+    #checklist-print, #checklist-print * { visibility: visible; }
+    #checklist-print {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      padding: 2rem;
+    }
+    .print-only-heading {
+      display: block;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  /* ---------- Staggered card reveal ---------- */
+  .services-grid > .fade-in:nth-child(2),
+  .doctors-grid > .fade-in:nth-child(2),
+  .testimonials-grid > .fade-in:nth-child(2),
+  .journey-grid > .fade-in:nth-child(2) { transition-delay: 0.08s; }
+
+  .services-grid > .fade-in:nth-child(3),
+  .doctors-grid > .fade-in:nth-child(3),
+  .testimonials-grid > .fade-in:nth-child(3),
+  .journey-grid > .fade-in:nth-child(3) { transition-delay: 0.16s; }
+
+  .services-grid > .fade-in:nth-child(4),
+  .doctors-grid > .fade-in:nth-child(4),
+  .testimonials-grid > .fade-in:nth-child(4) { transition-delay: 0.24s; }
 
   /* ---------- Footer ---------- */
   footer {
@@ -678,6 +877,7 @@
       <li><a href="#services">Services</a></li>
       <li><a href="#doctors">Our Doctors</a></li>
       <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#first-visit">First Visit</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
 
@@ -706,7 +906,7 @@
         </div>
       </div>
       <div class="hero-photo">
-        <img src="https://images.unsplash.com/photo-1734002886107-168181bcd6a1?w=800&q=80&auto=format&fit=crop" alt="Dr. Amanda Wells smiling, a physician at Wellview Clinic">
+        <img src="https://images.unsplash.com/photo-1734002886107-168181bcd6a1?w=800&q=80&auto=format&fit=crop" alt="Dr. Amanda Wells smiling, a physician at Wellview Clinic" width="280" height="280" fetchpriority="high">
         <div class="hero-badge">
           <span class="stars" aria-hidden="true">★★★★★</span>
           <span>4.9/5 from 2,300+ patients</span>
@@ -715,9 +915,18 @@
     </div>
     <div class="trust-strip">
       <div class="container">
-        <div class="trust-item"><span class="icon" aria-hidden="true">🕐</span> 24/7 Support</div>
-        <div class="trust-item"><span class="icon" aria-hidden="true">🩺</span> Certified Doctors</div>
-        <div class="trust-item"><span class="icon" aria-hidden="true">❤</span> 10,000+ Patients Served</div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          24/7 Support
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>
+          Certified Doctors
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z"/></svg>
+          10,000+ Patients Served
+        </div>
       </div>
     </div>
   </section>
@@ -765,25 +974,25 @@
       </div>
       <div class="doctors-grid">
         <div class="doctor-card fade-in">
-          <img class="doctor-photo" src="https://images.unsplash.com/photo-1757125736482-328a3cdd9743?w=800&q=80&auto=format&fit=crop" alt="Portrait of Dr. Amanda Wells">
+          <img class="doctor-photo" src="https://images.unsplash.com/photo-1757125736482-328a3cdd9743?w=800&q=80&auto=format&fit=crop" alt="Portrait of Dr. Amanda Wells" width="110" height="110" loading="lazy" decoding="async">
           <h3>Dr. Amanda Wells</h3>
           <div class="doctor-specialty">General Physician</div>
           <p class="bio">15 years helping families stay healthy, one visit at a time.</p>
         </div>
         <div class="doctor-card fade-in">
-          <img class="doctor-photo" src="https://images.unsplash.com/photo-1701980889802-55ff39e2e973?w=800&q=80&auto=format&fit=crop" alt="Portrait of Dr. Marcus Tan">
+          <img class="doctor-photo" src="https://images.unsplash.com/photo-1701980889802-55ff39e2e973?w=800&q=80&auto=format&fit=crop" alt="Portrait of Dr. Marcus Tan" width="110" height="110" loading="lazy" decoding="async">
           <h3>Dr. Marcus Tan</h3>
           <div class="doctor-specialty">Pediatrician</div>
           <p class="bio">Specializes in gentle, reassuring care for children of all ages.</p>
         </div>
         <div class="doctor-card fade-in">
-          <img class="doctor-photo" src="https://images.unsplash.com/photo-1659353888906-adb3e0041693?w=800&q=80&auto=format&fit=crop" alt="Portrait of Dr. Priya Nair">
+          <img class="doctor-photo" src="https://images.unsplash.com/photo-1659353888906-adb3e0041693?w=800&q=80&auto=format&fit=crop" alt="Portrait of Dr. Priya Nair" width="110" height="110" loading="lazy" decoding="async">
           <h3>Dr. Priya Nair</h3>
           <div class="doctor-specialty">Diagnostics Lead</div>
           <p class="bio">Oversees fast, accurate lab and imaging results for every patient.</p>
         </div>
         <div class="doctor-card fade-in">
-          <img class="doctor-photo" src="https://images.unsplash.com/photo-1558919047-c9b36c16009e?w=800&q=80&auto=format&fit=crop" alt="Portrait of Dr. James Ong">
+          <img class="doctor-photo" src="https://images.unsplash.com/photo-1558919047-c9b36c16009e?w=800&q=80&auto=format&fit=crop" alt="Portrait of Dr. James Ong" width="110" height="110" loading="lazy" decoding="async">
           <h3>Dr. James Ong</h3>
           <div class="doctor-specialty">Dental Surgeon</div>
           <p class="bio">Combines modern technique with a calm, painless chairside manner.</p>
@@ -804,7 +1013,7 @@
 
         <article class="testimonial-card fade-in">
           <div class="testimonial-head">
-            <img class="avatar" src="https://images.unsplash.com/photo-1758600587683-d86675a2f6e9?w=300&q=80&auto=format&fit=crop" alt="Photo of Sarah Lim">
+            <img class="avatar" src="https://images.unsplash.com/photo-1758600587683-d86675a2f6e9?w=300&q=80&auto=format&fit=crop" alt="Photo of Sarah Lim" width="48" height="48" loading="lazy" decoding="async">
             <div>
               <div class="testimonial-name">Sarah Lim</div>
               <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
@@ -815,7 +1024,7 @@
 
         <article class="testimonial-card fade-in">
           <div class="testimonial-head">
-            <img class="avatar" src="https://images.unsplash.com/photo-1774437678561-c321687f6986?w=300&q=80&auto=format&fit=crop" alt="Photo of Rajesh Thomas">
+            <img class="avatar" src="https://images.unsplash.com/photo-1774437678561-c321687f6986?w=300&q=80&auto=format&fit=crop" alt="Photo of Rajesh Thomas" width="48" height="48" loading="lazy" decoding="async">
             <div>
               <div class="testimonial-name">Rajesh Thomas</div>
               <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
@@ -826,7 +1035,7 @@
 
         <article class="testimonial-card fade-in">
           <div class="testimonial-head">
-            <img class="avatar" src="https://images.unsplash.com/photo-1758600587808-9e251cf34b94?w=300&q=80&auto=format&fit=crop" alt="Photo of Michelle Chua">
+            <img class="avatar" src="https://images.unsplash.com/photo-1758600587808-9e251cf34b94?w=300&q=80&auto=format&fit=crop" alt="Photo of Michelle Chua" width="48" height="48" loading="lazy" decoding="async">
             <div>
               <div class="testimonial-name">Michelle Chua</div>
               <div class="stars" aria-label="4 out of 5 stars">★★★★☆</div>
@@ -837,7 +1046,7 @@
 
         <article class="testimonial-card fade-in">
           <div class="testimonial-head">
-            <img class="avatar" src="https://images.unsplash.com/photo-1681097561932-36d0df02b379?w=300&q=80&auto=format&fit=crop" alt="Photo of David Koh">
+            <img class="avatar" src="https://images.unsplash.com/photo-1681097561932-36d0df02b379?w=300&q=80&auto=format&fit=crop" alt="Photo of David Koh" width="48" height="48" loading="lazy" decoding="async">
             <div>
               <div class="testimonial-name">David Koh</div>
               <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
@@ -846,6 +1055,57 @@
           <p class="testimonial-quote">"After years of switching clinics, I've finally found a team I trust completely. Highly recommend Wellview to anyone nearby."</p>
         </article>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FIRST VISIT / LEAD MAGNET ================= -->
+  <section id="first-visit" aria-label="Your first visit" style="background: var(--color-bg-alt);">
+    <div class="container">
+      <div class="section-heading fade-in">
+        <span class="eyebrow">Before You Arrive</span>
+        <h2>Your First Visit, Step by Step</h2>
+        <p>Three steps from booking to walking out reassured — and a free checklist so nothing catches you off guard.</p>
+      </div>
+
+      <ol class="journey-grid">
+        <li class="journey-step fade-in">
+          <span class="journey-number" aria-hidden="true">1</span>
+          <h3>Book your slot</h3>
+          <p>Choose a time in the form below — same-day slots are usually available.</p>
+        </li>
+        <li class="journey-step fade-in">
+          <span class="journey-number" aria-hidden="true">2</span>
+          <h3>See your doctor</h3>
+          <p>A focused consultation, plus on-site labs or imaging if you need them.</p>
+        </li>
+        <li class="journey-step fade-in">
+          <span class="journey-number" aria-hidden="true">3</span>
+          <h3>Leave with a plan</h3>
+          <p>Clear next steps, any prescriptions, and a follow-up date if it matters.</p>
+        </li>
+      </ol>
+
+      <div class="checklist-card fade-in">
+        <div class="checklist-copy">
+          <h3>Free: First Visit Checklist</h3>
+          <p>What to bring and how to get your child ready — one page, nothing to sign up for.</p>
+          <div id="checklist-print">
+            <p class="print-only-heading">Wellview Clinic — First Visit Checklist</p>
+            <ul class="checklist-list">
+              <li>NRIC / FIN or passport</li>
+              <li>Insurance card or Medisave details</li>
+              <li>Referral letter, if your GP gave you one</li>
+              <li>A list of current medications and allergies</li>
+              <li>For kids: their health booklet and a comfort item</li>
+            </ul>
+          </div>
+        </div>
+        <div class="checklist-actions">
+          <button type="button" class="btn btn-primary" id="download-checklist">Download Checklist</button>
+          <button type="button" class="btn btn-ghost" id="print-checklist">Print Checklist</button>
+          <a href="#contact" class="checklist-email-link" id="email-checklist-link">Or have our team email it to you →</a>
+        </div>
       </div>
     </div>
   </section>
@@ -862,28 +1122,28 @@
       <div class="contact-wrapper fade-in">
         <div class="contact-info">
           <div class="contact-info-item">
-            <div class="contact-info-icon" aria-hidden="true">📍</div>
+            <div class="contact-info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
             <div>
               <h4>Address</h4>
               <p>21 Orchard Boulevard, #03-08, Singapore 248649</p>
             </div>
           </div>
           <div class="contact-info-item">
-            <div class="contact-info-icon" aria-hidden="true">📞</div>
+            <div class="contact-info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></div>
             <div>
               <h4>Phone</h4>
               <p>+65 6123 4567</p>
             </div>
           </div>
           <div class="contact-info-item">
-            <div class="contact-info-icon" aria-hidden="true">✉</div>
+            <div class="contact-info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/><path d="M22 6l-10 7L2 6"/></svg></div>
             <div>
               <h4>Email</h4>
               <p>hello@wellviewclinic.sg</p>
             </div>
           </div>
           <div class="contact-info-item">
-            <div class="contact-info-icon" aria-hidden="true">🕐</div>
+            <div class="contact-info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
             <div>
               <h4>Hours</h4>
               <p>Mon–Sat: 8am – 8pm · Sun: 9am – 1pm</p>
@@ -967,6 +1227,7 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#doctors">Our Doctors</a></li>
           <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#first-visit">First Visit</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -1126,6 +1387,54 @@
         setFieldError(id, '');
       });
     });
+
+    /* ---------- First Visit Checklist (lead magnet) ---------- */
+    var downloadBtn = document.getElementById('download-checklist');
+    var printBtn = document.getElementById('print-checklist');
+    var emailLink = document.getElementById('email-checklist-link');
+
+    if (downloadBtn) {
+      downloadBtn.addEventListener('click', function () {
+        var checklistText = [
+          'Wellview Clinic — First Visit Checklist',
+          '',
+          'What to bring:',
+          '- NRIC / FIN or passport',
+          '- Insurance card or Medisave details',
+          '- Referral letter, if your GP gave you one',
+          '- A list of current medications and allergies',
+          '- For kids: their health booklet and a comfort item',
+          '',
+          '21 Orchard Boulevard, #03-08, Singapore 248649',
+          '+65 6123 4567 · hello@wellviewclinic.sg'
+        ].join('\n');
+
+        var blob = new Blob([checklistText], { type: 'text/plain' });
+        var url = URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = 'wellview-first-visit-checklist.txt';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      });
+    }
+
+    if (printBtn) {
+      printBtn.addEventListener('click', function () {
+        window.print();
+      });
+    }
+
+    if (emailLink) {
+      emailLink.addEventListener('click', function () {
+        var messageField = document.getElementById('message');
+        if (messageField && !messageField.value.trim()) {
+          messageField.value = 'Please email me the First Visit Checklist.';
+        }
+      });
+    }
 
   })();
 </script>

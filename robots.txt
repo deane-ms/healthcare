@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://deane-ms.github.io/healthcare/sitemap.xml

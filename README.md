@@ -13,6 +13,7 @@ A single-page marketing site for **Wellview Clinic**, a fictional Singapore heal
 - **Services** — general consultation, pediatric care, diagnostics & lab, dental care
 - **Meet Our Doctors** — team profiles with photo, specialty, and bio
 - **Testimonials** — patient quotes and star ratings
+- **Your First Visit** (`#first-visit`) — a 3-step visit journey plus a free, ungated "First Visit Checklist" lead magnet (real client-side download/print, no backend required)
 - **Enquiry form** (`#contact`) — client-side validated appointment request form
 - **Footer** — quick links, contact details, social links
 
@@ -36,8 +37,11 @@ Pushing to `main` triggers [`.github/workflows/deploy.yml`](.github/workflows/de
 
 - Plain HTML5, CSS3 (custom properties for theming), and vanilla JavaScript
 - No frameworks, package manager, or bundler
+- Type pairing: Fraunces (display headings) + Poppins (body/UI), loaded from Google Fonts
 - Accessibility touches: skip link, `aria-*` attributes, focus-visible styles, `prefers-reduced-motion` support
-- Scroll-triggered fade-in animations via `IntersectionObserver`
+- Scroll-triggered, staggered fade-in animations via `IntersectionObserver`
+- SEO: meta description, Open Graph/Twitter tags, canonical link, `MedicalClinic` JSON-LD structured data, `robots.txt` and `sitemap.xml`
+- Images use `loading="lazy"` + explicit `width`/`height` below the fold to avoid layout shift; the hero photo is `fetchpriority="high"`
 
 ## Regenerating the screenshot
 
