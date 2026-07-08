@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wellview Clinic — Compassionate Care, Close to You</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ---------- Reset & Base ---------- */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  :root {
+    --color-primary: #0d6e7d;
+    --color-primary-dark: #094f5a;
+    --color-secondary: #3fa9c9;
+    --color-accent: #ff8a65;
+    --color-accent-dark: #f4693a;
+    --color-bg: #ffffff;
+    --color-bg-alt: #f4fafb;
+    --color-text: #1f2d33;
+    --color-text-light: #5a6c72;
+    --color-border: #e1edf0;
+    --shadow-soft: 0 10px 30px rgba(13, 110, 125, 0.08);
+    --radius: 14px;
+    --max-width: 1180px;
+  }
+
+  body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--color-text);
+    background: var(--color-bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  ul { list-style: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; }
+  input, textarea, select { font-family: inherit; font-size: 1rem; }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  section { padding: 5rem 0; }
+
+  .section-heading {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 3rem;
+  }
+
+  .section-heading .eyebrow {
+    display: inline-block;
+    color: var(--color-primary);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-heading p {
+    color: var(--color-text-light);
+  }
+
+  /* Focus visibility for accessibility */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  /* Skip link */
+  .skip-link {
+    position: absolute;
+    left: -999px;
+    top: auto;
+    background: var(--color-primary);
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0 0 8px 0;
+    z-index: 1000;
+  }
+  .skip-link:focus {
+    left: 0;
+    top: 0;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.75rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.98rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+
+  .btn-primary {
+    background: var(--color-accent);
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(255, 138, 101, 0.35);
+  }
+  .btn-primary:hover { background: var(--color-accent-dark); transform: translateY(-2px); }
+
+  .btn-outline {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+  }
+  .btn-outline:hover { background: rgba(255, 255, 255, 0.25); transform: translateY(-2px); }
+
+  .btn-solid {
+    background: var(--color-primary);
+    color: #fff;
+  }
+  .btn-solid:hover { background: var(--color-primary-dark); }
+
+  /* ---------- Navbar ---------- */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 500;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--color-primary-dark);
+  }
+
+  .logo-mark {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-weight: 500;
+    color: var(--color-text);
+    position: relative;
+    padding: 0.25rem 0;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 0; height: 2px;
+    background: var(--color-accent);
+    transition: width 0.25s ease;
+  }
+  .nav-links a:hover::after,
+  .nav-links a:focus-visible::after { width: 100%; }
+
+  .nav-cta { display: none; }
+
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0.5rem;
+  }
+  .nav-toggle span {
+    width: 26px;
+    height: 3px;
+    background: var(--color-primary-dark);
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+  @media (min-width: 860px) {
+    .nav-toggle { display: none; }
+    .nav-cta { display: inline-flex; }
+  }
+
+  @media (max-width: 859px) {
+    .nav-links {
+      position: absolute;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: #fff;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      max-height: 0;
+      overflow: hidden;
+      border-bottom: 1px solid var(--color-border);
+      transition: max-height 0.3s ease;
+    }
+    .nav-links.open { max-height: 400px; }
+    .nav-links li { width: 100%; }
+    .nav-links a { display: block; padding: 1rem 1.5rem; width: 100%; }
+    .nav-links a::after { display: none; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    background: linear-gradient(120deg, var(--color-primary-dark), var(--color-primary) 55%, var(--color-secondary));
+    color: #fff;
+    overflow: hidden;
+    padding: 5.5rem 0 0;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.12), transparent 55%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 4rem;
+  }
+
+  @media (min-width: 900px) {
+    .hero-inner {
+      grid-template-columns: 1.1fr 0.9fr;
+      text-align: left;
+    }
+    .hero-actions { justify-content: flex-start; }
+  }
+
+  .hero-content { max-width: 720px; }
+
+  .hero-photo {
+    position: relative;
+    justify-self: center;
+  }
+
+  .hero-photo img {
+    width: 280px;
+    height: 280px;
+    border-radius: 28px;
+    object-fit: cover;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.28);
+    border: 4px solid rgba(255, 255, 255, 0.25);
+  }
+
+  .hero-badge {
+    position: absolute;
+    bottom: -18px;
+    left: -18px;
+    background: #fff;
+    color: var(--color-text);
+    padding: 0.9rem 1.2rem;
+    border-radius: 14px;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .hero-badge .stars { color: #f5b942; font-size: 0.9rem; }
+
+  @media (max-width: 899px) {
+    .hero-badge { left: 50%; transform: translateX(-50%); }
+  }
+
+  .hero h1 {
+    font-size: clamp(2.1rem, 5vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero p.subhead {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 2.25rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+
+  .trust-strip {
+    background: rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255,255,255,0.18);
+  }
+
+  .trust-strip .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
+    padding: 1.5rem;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: #fff;
+  }
+
+  .trust-item .icon { font-size: 1.3rem; }
+
+  /* ---------- Services ---------- */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.75rem;
+  }
+
+  .service-card {
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-soft); }
+
+  .service-icon {
+    width: 58px;
+    height: 58px;
+    margin: 0 auto 1.1rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+  }
+
+  .service-card h3 {
+    font-size: 1.1rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .service-card p { color: var(--color-text-light); font-size: 0.95rem; }
+
+  /* ---------- Doctors ---------- */
+  .doctors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.75rem;
+  }
+
+  .doctor-card {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.25s ease;
+  }
+  .doctor-card:hover { transform: translateY(-6px); }
+
+  .doctor-photo {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1.1rem;
+    border: 4px solid var(--color-bg-alt);
+  }
+
+  .doctor-card h3 { color: var(--color-primary-dark); font-size: 1.05rem; margin-bottom: 0.2rem; }
+  .doctor-specialty { color: var(--color-accent-dark); font-size: 0.85rem; font-weight: 600; margin-bottom: 0.6rem; }
+  .doctor-card p.bio { color: var(--color-text-light); font-size: 0.9rem; }
+
+  /* ---------- Testimonials ---------- */
+  .testimonials { background: var(--color-bg-alt); }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.75rem;
+  }
+
+  .testimonial-card {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .testimonial-head {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+
+  .avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    color: #fff;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .testimonial-name { font-weight: 600; color: var(--color-primary-dark); }
+  .stars { color: #f5b942; letter-spacing: 2px; font-size: 0.95rem; }
+  .testimonial-quote { color: var(--color-text-light); font-size: 0.97rem; font-style: italic; }
+
+  /* ---------- Contact / Enquiry Form ---------- */
+  .contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .contact-wrapper { grid-template-columns: 0.9fr 1.1fr; }
+  }
+
+  .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .contact-info-item { display: flex; gap: 1rem; align-items: flex-start; }
+
+  .contact-info-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--color-bg-alt);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.1rem;
+  }
+
+  .contact-info-item h4 { font-size: 1rem; color: var(--color-primary-dark); margin-bottom: 0.2rem; }
+  .contact-info-item p { color: var(--color-text-light); font-size: 0.95rem; }
+
+  form#enquiry-form {
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 2rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 560px) {
+    .form-row.two-col { grid-template-columns: 1fr 1fr; }
+  }
+
+  .field { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.25rem; }
+
+  .field label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-primary-dark);
+  }
+
+  .field .required-mark { color: var(--color-accent-dark); }
+
+  .field input,
+  .field textarea {
+    padding: 0.8rem 1rem;
+    border: 1.5px solid var(--color-border);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--color-text);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .field input:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 3px rgba(63, 169, 201, 0.2);
+  }
+
+  .field input[aria-invalid="true"],
+  .field textarea[aria-invalid="true"] {
+    border-color: #e0523f;
+  }
+
+  .field textarea { resize: vertical; min-height: 110px; }
+
+  .error-message {
+    color: #c0392b;
+    font-size: 0.82rem;
+    min-height: 1.1em;
+  }
+
+  .form-status {
+    margin-top: 1rem;
+    padding: 1rem 1.25rem;
+    border-radius: 10px;
+    font-weight: 500;
+    display: none;
+  }
+
+  .form-status.success {
+    display: block;
+    background: #e4f7ee;
+    color: #1c7c4d;
+    border: 1px solid #b7e6cc;
+  }
+
+  .form-status.error {
+    display: block;
+    background: #fdecea;
+    color: #c0392b;
+    border: 1px solid #f6c4bd;
+  }
+
+  form#enquiry-form button[type="submit"] { width: 100%; margin-top: 0.25rem; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--color-primary-dark);
+    color: rgba(255,255,255,0.85);
+    padding-top: 4rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  @media (min-width: 700px) {
+    .footer-grid { grid-template-columns: 1.3fr 1fr 1fr; }
+  }
+
+  .footer-brand .logo { color: #fff; margin-bottom: 0.75rem; }
+  .footer-brand p { color: rgba(255,255,255,0.7); font-size: 0.92rem; max-width: 320px; }
+
+  .footer h4 {
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer-links li { margin-bottom: 0.65rem; }
+  .footer-links a { color: rgba(255,255,255,0.75); font-size: 0.93rem; }
+  .footer-links a:hover { color: #fff; }
+
+  .footer-contact li { margin-bottom: 0.65rem; font-size: 0.93rem; color: rgba(255,255,255,0.75); }
+
+  .social-links {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+  }
+
+  .social-links a {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .social-links a:hover { background: var(--color-accent); transform: translateY(-3px); }
+  .social-links svg { width: 18px; height: 18px; fill: #fff; }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding: 1.5rem 0;
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* ---------- Fade-in on scroll ---------- */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .fade-in { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+  <div class="container">
+    <a href="#home" class="logo" aria-label="Wellview Clinic home">
+      <span class="logo-mark" aria-hidden="true">+</span>
+      Wellview Clinic
+    </a>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#doctors">Our Doctors</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <a href="#contact" class="btn btn-solid nav-cta">Book Now</a>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="home" aria-label="Introduction">
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <h1>Compassionate Care, Close to You</h1>
+        <p class="subhead">
+          Wellview Clinic brings together experienced physicians, modern diagnostics, and a
+          patient-first philosophy — so you and your family always have somewhere trusted to turn.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Book an Appointment</a>
+          <a href="#services" class="btn btn-outline">Our Services</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="https://images.unsplash.com/photo-1734002886107-168181bcd6a1?w=800&q=80&auto=format&fit=crop" alt="Dr. Amanda Wells smiling, a physician at Wellview Clinic">
+        <div class="hero-badge">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <span>4.9/5 from 2,300+ patients</span>
+        </div>
+      </div>
+    </div>
+    <div class="trust-strip">
+      <div class="container">
+        <div class="trust-item"><span class="icon" aria-hidden="true">🕐</span> 24/7 Support</div>
+        <div class="trust-item"><span class="icon" aria-hidden="true">🩺</span> Certified Doctors</div>
+        <div class="trust-item"><span class="icon" aria-hidden="true">❤</span> 10,000+ Patients Served</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section id="services" aria-label="Our services">
+    <div class="container">
+      <div class="section-heading fade-in">
+        <span class="eyebrow">What We Offer</span>
+        <h2>Our Services</h2>
+        <p>Comprehensive care designed around every stage of life, delivered with warmth and expertise.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card fade-in">
+          <div class="service-icon" aria-hidden="true">🩺</div>
+          <h3>General Consultation</h3>
+          <p>Same-day appointments for everyday health concerns and check-ups.</p>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon" aria-hidden="true">🧒</div>
+          <h3>Pediatric Care</h3>
+          <p>Gentle, attentive care for infants, children, and teens.</p>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon" aria-hidden="true">🔬</div>
+          <h3>Diagnostics &amp; Lab</h3>
+          <p>On-site testing and imaging with fast, accurate results.</p>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon" aria-hidden="true">🦷</div>
+          <h3>Dental Care</h3>
+          <p>Preventive and restorative dentistry for the whole family.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MEET OUR DOCTORS ================= -->
+  <section id="doctors" aria-label="Meet our doctors" style="background: var(--color-bg-alt);">
+    <div class="container">
+      <div class="section-heading fade-in">
+        <span class="eyebrow">Our Team</span>
+        <h2>Meet Our Doctors</h2>
+        <p>A dedicated team who take the time to know you, not just your symptoms.</p>
+      </div>
+      <div class="doctors-grid">
+        <div class="doctor-card fade-in">
+          <img class="doctor-photo" src="https://images.unsplash.com/photo-1757125736482-328a3cdd9743?w=800&q=80&auto=format&fit=crop" alt="Portrait of Dr. Amanda Wells">
+          <h3>Dr. Amanda Wells</h3>
+          <div class="doctor-specialty">General Physician</div>
+          <p class="bio">15 years helping families stay healthy, one visit at a time.</p>
+        </div>
+        <div class="doctor-card fade-in">
+          <img class="doctor-photo" src="https://images.unsplash.com/photo-1701980889802-55ff39e2e973?w=800&q=80&auto=format&fit=crop" alt="Portrait of Dr. Marcus Tan">
+          <h3>Dr. Marcus Tan</h3>
+          <div class="doctor-specialty">Pediatrician</div>
+          <p class="bio">Specializes in gentle, reassuring care for children of all ages.</p>
+        </div>
+        <div class="doctor-card fade-in">
+          <img class="doctor-photo" src="https://images.unsplash.com/photo-1659353888906-adb3e0041693?w=800&q=80&auto=format&fit=crop" alt="Portrait of Dr. Priya Nair">
+          <h3>Dr. Priya Nair</h3>
+          <div class="doctor-specialty">Diagnostics Lead</div>
+          <p class="bio">Oversees fast, accurate lab and imaging results for every patient.</p>
+        </div>
+        <div class="doctor-card fade-in">
+          <img class="doctor-photo" src="https://images.unsplash.com/photo-1558919047-c9b36c16009e?w=800&q=80&auto=format&fit=crop" alt="Portrait of Dr. James Ong">
+          <h3>Dr. James Ong</h3>
+          <div class="doctor-specialty">Dental Surgeon</div>
+          <p class="bio">Combines modern technique with a calm, painless chairside manner.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONIALS ================= -->
+  <section class="testimonials" id="testimonials" aria-label="Patient testimonials">
+    <div class="container">
+      <div class="section-heading fade-in">
+        <span class="eyebrow">Patient Stories</span>
+        <h2>What Our Patients Say</h2>
+        <p>Real experiences from the people we're privileged to care for every day.</p>
+      </div>
+      <div class="testimonials-grid">
+
+        <article class="testimonial-card fade-in">
+          <div class="testimonial-head">
+            <img class="avatar" src="https://images.unsplash.com/photo-1758600587683-d86675a2f6e9?w=300&q=80&auto=format&fit=crop" alt="Photo of Sarah Lim">
+            <div>
+              <div class="testimonial-name">Sarah Lim</div>
+              <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
+          </div>
+          <p class="testimonial-quote">"The doctors here actually listen. I never feel rushed, and the follow-up care after my surgery was outstanding."</p>
+        </article>
+
+        <article class="testimonial-card fade-in">
+          <div class="testimonial-head">
+            <img class="avatar" src="https://images.unsplash.com/photo-1774437678561-c321687f6986?w=300&q=80&auto=format&fit=crop" alt="Photo of Rajesh Thomas">
+            <div>
+              <div class="testimonial-name">Rajesh Thomas</div>
+              <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
+          </div>
+          <p class="testimonial-quote">"Booking an appointment took two minutes and I was seen the same afternoon. Genuinely impressed with how smooth everything was."</p>
+        </article>
+
+        <article class="testimonial-card fade-in">
+          <div class="testimonial-head">
+            <img class="avatar" src="https://images.unsplash.com/photo-1758600587808-9e251cf34b94?w=300&q=80&auto=format&fit=crop" alt="Photo of Michelle Chua">
+            <div>
+              <div class="testimonial-name">Michelle Chua</div>
+              <div class="stars" aria-label="4 out of 5 stars">★★★★☆</div>
+            </div>
+          </div>
+          <p class="testimonial-quote">"Friendly staff and a clean, calming clinic. My kids actually look forward to their check-ups now."</p>
+        </article>
+
+        <article class="testimonial-card fade-in">
+          <div class="testimonial-head">
+            <img class="avatar" src="https://images.unsplash.com/photo-1681097561932-36d0df02b379?w=300&q=80&auto=format&fit=crop" alt="Photo of David Koh">
+            <div>
+              <div class="testimonial-name">David Koh</div>
+              <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
+          </div>
+          <p class="testimonial-quote">"After years of switching clinics, I've finally found a team I trust completely. Highly recommend Wellview to anyone nearby."</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ENQUIRY FORM ================= -->
+  <section id="contact" aria-label="Request an appointment">
+    <div class="container">
+      <div class="section-heading fade-in">
+        <span class="eyebrow">Get In Touch</span>
+        <h2>Request an Appointment</h2>
+        <p>Fill in the form below and our team will confirm your appointment within one business day.</p>
+      </div>
+
+      <div class="contact-wrapper fade-in">
+        <div class="contact-info">
+          <div class="contact-info-item">
+            <div class="contact-info-icon" aria-hidden="true">📍</div>
+            <div>
+              <h4>Address</h4>
+              <p>21 Orchard Boulevard, #03-08, Singapore 248649</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon" aria-hidden="true">📞</div>
+            <div>
+              <h4>Phone</h4>
+              <p>+65 6123 4567</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon" aria-hidden="true">✉</div>
+            <div>
+              <h4>Email</h4>
+              <p>hello@wellviewclinic.sg</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon" aria-hidden="true">🕐</div>
+            <div>
+              <h4>Hours</h4>
+              <p>Mon–Sat: 8am – 8pm · Sun: 9am – 1pm</p>
+            </div>
+          </div>
+        </div>
+
+        <form id="enquiry-form" novalidate>
+          <div class="form-row two-col">
+            <div class="field">
+              <label for="fullName">Full Name <span class="required-mark">*</span></label>
+              <input type="text" id="fullName" name="fullName" autocomplete="name" required aria-describedby="fullName-error">
+              <span class="error-message" id="fullName-error"></span>
+            </div>
+            <div class="field">
+              <label for="email">Email <span class="required-mark">*</span></label>
+              <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="email-error">
+              <span class="error-message" id="email-error"></span>
+            </div>
+          </div>
+
+          <div class="form-row two-col">
+            <div class="field">
+              <label for="phone">Phone <span class="required-mark">*</span></label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" required aria-describedby="phone-error" placeholder="e.g. 9123 4567">
+              <span class="error-message" id="phone-error"></span>
+            </div>
+            <div class="field">
+              <label for="preferredDate">Preferred Date</label>
+              <input type="date" id="preferredDate" name="preferredDate" aria-describedby="preferredDate-error">
+              <span class="error-message" id="preferredDate-error"></span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message">Message / Reason for Visit</label>
+            <textarea id="message" name="message" aria-describedby="message-error" placeholder="Tell us briefly what you'd like to see the doctor about..."></textarea>
+            <span class="error-message" id="message-error"></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit Request</button>
+
+          <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="logo" aria-label="Wellview Clinic home">
+          <span class="logo-mark" aria-hidden="true">+</span>
+          Wellview Clinic
+        </a>
+        <p>Compassionate, modern healthcare for you and your family — every visit, every time.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Wellview Clinic on Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>
+          </a>
+          <a href="#" aria-label="Wellview Clinic on Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c2.7 0 3.1 0 4.1.1 1.1 0 1.8.2 2.4.5.7.2 1.2.6 1.7 1.1.5.5.9 1 1.1 1.7.3.6.5 1.3.5 2.4.1 1 .1 1.4.1 4.1s0 3.1-.1 4.1c0 1.1-.2 1.8-.5 2.4a4.9 4.9 0 0 1-2.8 2.8c-.6.3-1.3.5-2.4.5-1 .1-1.4.1-4.1.1s-3.1 0-4.1-.1c-1.1 0-1.8-.2-2.4-.5a4.6 4.6 0 0 1-1.7-1.1 4.6 4.6 0 0 1-1.1-1.7c-.3-.6-.5-1.3-.5-2.4C2 15.1 2 14.7 2 12s0-3.1.1-4.1c0-1.1.2-1.8.5-2.4.2-.7.6-1.2 1.1-1.7.5-.5 1-.9 1.7-1.1.6-.3 1.3-.5 2.4-.5C8.9 2 9.3 2 12 2Zm0 1.8c-2.6 0-3 0-4 .1-.9 0-1.4.2-1.7.3-.4.2-.7.3-1 .6-.3.3-.5.6-.6 1-.1.3-.3.8-.3 1.7-.1 1-.1 1.4-.1 4s0 3 .1 4c0 .9.2 1.4.3 1.7.1.4.3.7.6 1 .3.3.6.5 1 .6.3.1.8.3 1.7.3 1 .1 1.4.1 4 .1s3 0 4-.1c.9 0 1.4-.2 1.7-.3.4-.1.7-.3 1-.6.3-.3.5-.6.6-1 .1-.3.3-.8.3-1.7.1-1 .1-1.4.1-4s0-3-.1-4c0-.9-.2-1.4-.3-1.7a2.6 2.6 0 0 0-.6-1 2.6 2.6 0 0 0-1-.6c-.3-.1-.8-.3-1.7-.3-1-.1-1.4-.1-4-.1Zm0 3.5a4.7 4.7 0 1 1 0 9.4 4.7 4.7 0 0 1 0-9.4Zm0 1.8a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8Zm5-2a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0Z"/></svg>
+          </a>
+          <a href="#" aria-label="Wellview Clinic on X (Twitter)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.2 8.2L23 22h-6.6l-5.2-6.8L5.2 22H2l7.7-8.8L1.4 2H8.2l4.7 6.3L18.9 2Zm-1.2 18h1.8L7.4 4H5.5l12.2 16Z"/></svg>
+          </a>
+          <a href="#" aria-label="Wellview Clinic on LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.9 8.4H3.6V20H6.9V8.4ZM5.3 3.6a1.9 1.9 0 1 0 0 3.8 1.9 1.9 0 0 0 0-3.8ZM20.4 20h-3.3v-6c0-1.4 0-3.3-2-3.3s-2.3 1.6-2.3 3.2V20H9.5V8.4h3.2v1.6h.1a3.5 3.5 0 0 1 3.1-1.7c3.4 0 4.5 2.2 4.5 5.1V20Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <nav class="footer" aria-label="Footer navigation">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#doctors">Our Doctors</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer">
+        <h4>Contact</h4>
+        <ul class="footer-contact">
+          <li>21 Orchard Boulevard, #03-08<br>Singapore 248649</li>
+          <li>+65 6123 4567</li>
+          <li>hello@wellviewclinic.sg</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; <span id="year"></span> Wellview Clinic. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    'use strict';
+
+    /* ---------- Footer year ---------- */
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* ---------- Mobile nav toggle ---------- */
+    var navToggle = document.getElementById('nav-toggle');
+    var navLinks = document.getElementById('nav-links');
+
+    navToggle.addEventListener('click', function () {
+      var isOpen = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // Close mobile menu after a link is clicked
+    navLinks.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* ---------- Fade-in on scroll ---------- */
+    var fadeEls = document.querySelectorAll('.fade-in');
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      fadeEls.forEach(function (el) { observer.observe(el); });
+    } else {
+      // Fallback: reveal everything immediately
+      fadeEls.forEach(function (el) { el.classList.add('visible'); });
+    }
+
+    /* ---------- Enquiry form validation & submission ---------- */
+    var form = document.getElementById('enquiry-form');
+    var statusBox = document.getElementById('form-status');
+
+    var EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var PHONE_REGEX = /^[0-9+\-\s()]{7,20}$/;
+
+    function setFieldError(fieldId, message) {
+      var input = document.getElementById(fieldId);
+      var errorEl = document.getElementById(fieldId + '-error');
+      if (message) {
+        input.setAttribute('aria-invalid', 'true');
+        errorEl.textContent = message;
+      } else {
+        input.removeAttribute('aria-invalid');
+        errorEl.textContent = '';
+      }
+    }
+
+    function validateForm(data) {
+      var isValid = true;
+
+      if (!data.fullName.trim()) {
+        setFieldError('fullName', 'Please enter your full name.');
+        isValid = false;
+      } else {
+        setFieldError('fullName', '');
+      }
+
+      if (!data.email.trim()) {
+        setFieldError('email', 'Please enter your email address.');
+        isValid = false;
+      } else if (!EMAIL_REGEX.test(data.email.trim())) {
+        setFieldError('email', 'Please enter a valid email address.');
+        isValid = false;
+      } else {
+        setFieldError('email', '');
+      }
+
+      if (!data.phone.trim()) {
+        setFieldError('phone', 'Please enter your phone number.');
+        isValid = false;
+      } else if (!PHONE_REGEX.test(data.phone.trim())) {
+        setFieldError('phone', 'Please enter a valid phone number.');
+        isValid = false;
+      } else {
+        setFieldError('phone', '');
+      }
+
+      return isValid;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var formData = new FormData(form);
+      var data = {
+        fullName: formData.get('fullName') || '',
+        email: formData.get('email') || '',
+        phone: formData.get('phone') || '',
+        preferredDate: formData.get('preferredDate') || '',
+        message: formData.get('message') || ''
+      };
+
+      statusBox.className = 'form-status';
+      statusBox.textContent = '';
+
+      if (!validateForm(data)) {
+        statusBox.classList.add('error');
+        statusBox.textContent = 'Please correct the highlighted fields and try again.';
+        return;
+      }
+
+      // ---------------------------------------------------------------
+      // Real backend integration point:
+      // Replace the console.log below with, e.g.:
+      //
+      // fetch('/api/appointments', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(data)
+      // })
+      //   .then(function (res) { return res.json(); })
+      //   .then(function (result) { /* handle success */ })
+      //   .catch(function (err) { /* handle error */ });
+      // ---------------------------------------------------------------
+      console.log('Appointment enquiry submitted:', data);
+
+      statusBox.classList.add('success');
+      statusBox.textContent = "Thank you! We'll contact you shortly.";
+      form.reset();
+
+      ['fullName', 'email', 'phone', 'preferredDate', 'message'].forEach(function (id) {
+        setFieldError(id, '');
+      });
+    });
+
+  })();
+</script>
+
+</body>
+</html>
